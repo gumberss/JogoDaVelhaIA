@@ -83,6 +83,7 @@ namespace JogoDaVelhaIATest.Services
                                     'X','\0','\0',
                                     'X','\0','\0',}, newGameId, 3, 6),
             };
+            otherGame.ForEach(i => i.Win(true));
 
             _memory.AddRange(otherGame);
             _memory.AddRange(otherGame);
@@ -90,6 +91,8 @@ namespace JogoDaVelhaIATest.Services
             var currentGame = new Layout(new[] {'X','O','\0',
                                                 '\0','\0','\0',
                                                 '\0','\0','\0'}, Guid.NewGuid(), 0, 1);
+
+            _computerBrain = new ComputerBrain(_memory);
 
             var position = _findBestMovement.FindPosition(_computerBrain, currentGame);
 

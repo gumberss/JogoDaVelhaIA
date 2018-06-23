@@ -95,6 +95,8 @@ namespace JogoDaVelhaIATest.Services
             currentGame.Move(0, 'X');
             currentGame.Move(1, 'O');
 
+            _computerBrain = new ComputerBrain(_memory);
+
             var position = _findBestMovement.FindPosition(_computerBrain, currentGame);
 
             position.Should().Be(3, because: "Dois dos três jogos vencedores jogaram na posição 3 neste movimento");
@@ -128,6 +130,8 @@ namespace JogoDaVelhaIATest.Services
 
             _memory.AddRange(otherGame);
             _memory.AddRange(otherGame);
+
+            _computerBrain = new ComputerBrain(_memory);
 
             var currentGame = new Layout();
 
