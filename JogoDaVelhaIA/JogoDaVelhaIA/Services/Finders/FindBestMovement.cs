@@ -49,7 +49,7 @@ namespace JogoDaVelhaIA.Services.Finders
 
         private static List<Layout> GetNextTurnMoves(ComputerBrain computerBrain, Layout currentGame, IEnumerable<Layout> beforeGames)
         {
-            List<Layout> failMoves = new List<Layout>(beforeGames.Count());
+            List<Layout> moves = new List<Layout>(beforeGames.Count());
 
             foreach (var current in beforeGames)
             {
@@ -57,10 +57,10 @@ namespace JogoDaVelhaIA.Services.Finders
 
                 var currentTurn = beforeGame.FirstOrDefault(i => i.Turn == currentGame.Turn + 1);
 
-                if (currentTurn != null) failMoves.Add(currentTurn);
+                if (currentTurn != null) moves.Add(currentTurn);
             }
 
-            return failMoves;
+            return moves;
         }
 
         private List<int> GetPositionMoves(char[] currentGameArray, IEnumerable<Layout> baseLayouts)
